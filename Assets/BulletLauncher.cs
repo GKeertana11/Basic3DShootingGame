@@ -6,6 +6,9 @@ public class BulletLauncher : MonoBehaviour
 {
     // Start is called before the first frame update
     public GameObject bulletPrefab;
+    private GameObject bulletLaunched;
+    public float speed;
+    Rigidbody rb;
     void Start()
     {
         
@@ -16,8 +19,9 @@ public class BulletLauncher : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            Instantiate(bulletPrefab,transform.position,Quaternion.identity);
-
+           bulletLaunched= Instantiate(bulletPrefab,transform.position,Quaternion.identity);
+            bulletLaunched.GetComponent<Rigidbody>().AddForce(transform.forward * speed);
+           
         }
     }
 }
