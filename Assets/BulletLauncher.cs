@@ -20,7 +20,7 @@ public class BulletLauncher : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Space))
         {
            bulletLaunched= Instantiate(bulletPrefab,transform.position,Quaternion.identity);
-            bulletLaunched.GetComponent<Rigidbody>().AddForce(transform.forward * speed);
+            bulletLaunched.GetComponent<Rigidbody>().velocity = Camera.main.transform.rotation * Vector3.forward * speed;
            
         }
     }
