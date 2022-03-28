@@ -6,9 +6,10 @@ public class DestroyEnemy : MonoBehaviour
 {
     // Start is called before the first frame update
     ScoreManager score;
+    BulletLauncher bulletLauncher;
     void Start()
     {
-        
+        bulletLauncher = GameObject.Find("Player").GetComponent<BulletLauncher>();  
     }
 
     // Update is called once per frame
@@ -24,6 +25,8 @@ public class DestroyEnemy : MonoBehaviour
             Destroy(Enemy.gameObject);
             score = GameObject.Find("ScoreManager").GetComponent<ScoreManager>();
             score.ScoreCalculator(10);
+            bulletLauncher.BackToPool(gameObject);
+
 
         }
 
